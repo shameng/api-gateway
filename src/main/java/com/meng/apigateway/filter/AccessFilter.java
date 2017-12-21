@@ -48,6 +48,8 @@ public class AccessFilter extends ZuulFilter {
      */
     @Override
     public Object run() {
+        testError();
+
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
 
@@ -66,4 +68,9 @@ public class AccessFilter extends ZuulFilter {
         LOG.info("access token ok");
         return null;
     }
+
+    private void testError() {
+        throw new RuntimeException("Exist some error...");
+    }
+
 }
